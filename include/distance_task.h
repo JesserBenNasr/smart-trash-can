@@ -1,6 +1,4 @@
-#ifndef DISTANCE_TASK_H
-#define DISTANCE_TASK_H
+#pragma once 
 
 void distance_task(void *pvParameters);
 
-#endif
