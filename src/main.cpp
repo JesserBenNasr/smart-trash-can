@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <Servo.h>
 #include <Arduino_FreeRTOS.h>
 #include <semphr.h>
