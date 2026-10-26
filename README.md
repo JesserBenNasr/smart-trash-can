@@ -1,5 +1,5 @@
 
-# Smart Trash Can — Arduino Mega 2560 & FreeRTOS
+# Smart Trash Can Project: Arduino Mega 2560 & FreeRTOS
 
 An embedded systems project that automates trash-can lid control using an ultrasonic distance sensor, a servo motor, and FreeRTOS.
 
@@ -45,35 +45,10 @@ The firmware is organized into three FreeRTOS tasks.
 
 
 ### FreeRTOS Task and Queue Diagram
+The diagram below illustrates the three FreeRTOS tasks, inter-task
+communication through queues, and mutex-based resource synchronization.
 
-```mermaid
-flowchart TD
-    D["Distance Task - HC-SR04 Sensor"]
-
-    QO[["xQopen Queue"]]
-    QC[["xQclose Queue"]]
-
-    O["Open Task"]
-    C["Close Task"]
-
-    M{{"xMutex Mutex"}}
-
-    S["Servo Motor"]
-    L["Status LED"]
-
-    D -->|"Distance < 30 cm"| QO
-    D -->|"Distance >= 30 cm"| QC
-
-    QO --> O
-    QC --> C
-
-    O --> M
-    C --> M
-
-    M --> S
-    O --> L
-    C --> L
-```
+![FreeRTOS Task and Queue Architecture](docs/images/freertos_architecture.png)
 
 ### Task Responsibilities
 
