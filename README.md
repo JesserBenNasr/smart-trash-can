@@ -43,25 +43,26 @@ The project explores real-time embedded programming using FreeRTOS on an Arduino
 
 The firmware is organized into three FreeRTOS tasks.
 
+
 ### FreeRTOS Task and Queue Diagram
 
 ```mermaid
 flowchart TD
-    D["Distance Task<br/>HC-SR04 Sensor"]
+    D["Distance Task - HC-SR04 Sensor"]
 
-    QO[["xQopen<br/>Queue"]]
-    QC[["xQclose<br/>Queue"]]
+    QO[["xQopen Queue"]]
+    QC[["xQclose Queue"]]
 
     O["Open Task"]
     C["Close Task"]
 
-    M{{"xMutex<br/>Mutex"}}
+    M{{"xMutex Mutex"}}
 
     S["Servo Motor"]
     L["Status LED"]
 
     D -->|"Distance < 30 cm"| QO
-    D -->|"Distance ≥ 30 cm"| QC
+    D -->|"Distance >= 30 cm"| QC
 
     QO --> O
     QC --> C
